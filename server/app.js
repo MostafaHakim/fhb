@@ -10,7 +10,7 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.get('/', () => {
+app.get('/', (req, res) => {
     res.status(202).send("Welcome")
 })
 //=================teacher info===========
