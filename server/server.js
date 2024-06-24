@@ -2,14 +2,14 @@ require('dotenv').config()
 const { default: mongoose, connect } = require('mongoose')
 const app = require('./app')
 const PORT = process.env.PORT || 5001
-const MONGODB_URL = process.env.MONGODB_URL
+
 
 
 
 //db connection
-const connectDB = async () => {
+const connectDB = () => {
     try {
-        await mongoose.connect(MONGODB_URL)
+        mongoose.connect('mongodb+srv://fhbash:fhb134042@fhb.3myln1i.mongodb.net/fhb?retryWrites=true&w=majority&appName=fhb')
         console.log('db connected')
     } catch (error) {
         console.log('something Broken')
