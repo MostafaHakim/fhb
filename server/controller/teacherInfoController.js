@@ -3,7 +3,7 @@ const Teacher = require('../model/teacherInfoModel')
 
 //==================find teacher==============
 const getTeacher = async (req, res) => {
-    const getTeacherInfo = await Teacher.find()
+
     res.status(200).send("Teacher pai nai")
     console.log(getTeacherInfo)
 }
