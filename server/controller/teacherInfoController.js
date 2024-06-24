@@ -4,7 +4,7 @@ const Teacher = require('../model/teacherInfoModel')
 //==================find teacher==============
 const getTeacher = async (req, res) => {
     const getTeacherInfo = await Teacher.find()
-    res.status(200).json(getTeacherInfo)
+    res.status(200).send("Teacher pai nai")
     console.log(getTeacherInfo)
 }
 
@@ -24,7 +24,7 @@ const createTeacher = async (req, res) => {
         tSalary
     })
     const insertTeacher = await newTeacher.save()
-    res.status(200).send(insertTeacher)
+    res.status(200).json(insertTeacher)
     console.log(insertTeacher)
 }
 
