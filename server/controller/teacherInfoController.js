@@ -10,7 +10,7 @@ const getTeacher = (req, res) => {
 
 
 //==================create teacher==============
-const createTeacher = (req, res) => {
+const createTeacher = async (req, res) => {
     const {
         tId,
         tName,
@@ -23,7 +23,7 @@ const createTeacher = (req, res) => {
         tDesignation,
         tSalary
     })
-    const insertTeacher = newTeacher.save()
+    const insertTeacher = await newTeacher.save()
     res.status(200).send(insertTeacher)
     console.log(insertTeacher)
 }
