@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
     res.status(202).send("Welcome")
 })
 //=================teacher info===========
-app.use('/teacher', teacherInfoRoute)
+app.use('/teacher', (req, res) => {
+    res.send("teacher")
+})
 //===========Salary Route============
 app.use('/salary', salaryRouter)
 
