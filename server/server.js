@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5001
 //db connection
 const connectDB = () => {
     try {
-        mongoose.connect('mongodb+srv://fhbash:fhb134042@fhb.3myln1i.mongodb.net/fhb?retryWrites=true&w=majority&appName=fhb')
+        mongoose.connect('mongodb+srv://vercel-admin-user:MTtgCgR04tq8h3Wy@fhb.3myln1i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
         console.log('db connected')
     } catch (error) {
         console.log('something Broken')
