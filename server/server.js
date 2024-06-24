@@ -7,9 +7,9 @@ const MONGODB_URL = process.env.MONGODB_URL
 
 
 //db connection
-const connectDB = async () => {
+const connectDB = () => {
     try {
-        await mongoose.connect(MONGODB_URL)
+        mongoose.connect(MONGODB_URL)
         console.log('db connected')
     } catch (error) {
         console.log('something Broken')
@@ -19,7 +19,7 @@ const connectDB = async () => {
 //server connection
 app.listen(PORT, async () => {
     console.log(`server is running at the port of ${PORT}`)
-    await connectDB();
+    connectDB();
 })
 
 

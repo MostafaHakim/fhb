@@ -1,12 +1,12 @@
 const Salary = require('../model/salaryModel')
 
-const getSalary = async (req, res) => {
-    const getSalaryId = await Salary.find()
+const getSalary = (req, res) => {
+    const getSalaryId = Salary.find()
     res.status(200).json(getSalaryId)
     console.log(getSalaryId)
 }
 
-const createSalary = async (req, res) => {
+const createSalary = (req, res) => {
     try {
         const { tId, tName, tSalary, tSalaryMonth, late, absent } = req.body;
 
@@ -23,7 +23,7 @@ const createSalary = async (req, res) => {
             absent,
             netSalary: calSalary(tSalary, late, absent)
         })
-        const createdSalary = await newSalary.save()
+        const createdSalary = newSalary.save()
         console.log(createdSalary)
         res.status(200).json(createdSalary)
     } catch (error) {

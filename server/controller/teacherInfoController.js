@@ -2,15 +2,15 @@ const Teacher = require('../model/teacherInfoModel')
 
 
 //==================find teacher==============
-const getTeacher = async (req, res) => {
-    const getTeacherInfo = await Teacher.find()
+const getTeacher = (req, res) => {
+    const getTeacherInfo = Teacher.find()
     res.status(200).send(getTeacherInfo)
     console.log(getTeacherInfo)
 }
 
 
 //==================create teacher==============
-const createTeacher = async (req, res) => {
+const createTeacher = (req, res) => {
     const {
         tId,
         tName,
@@ -23,7 +23,7 @@ const createTeacher = async (req, res) => {
         tDesignation,
         tSalary
     })
-    const insertTeacher = await newTeacher.save()
+    const insertTeacher = newTeacher.save()
     res.status(200).send(insertTeacher)
     console.log(insertTeacher)
 }
