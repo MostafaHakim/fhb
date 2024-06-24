@@ -2,8 +2,8 @@ const Teacher = require('../model/teacherInfoModel')
 
 
 //==================find teacher==============
-const getTeacher = async (req, res) => {
-    const getTeacherInfo = await Teacher.find()
+const getTeacher = (req, res) => {
+    const getTeacherInfo = Teacher.find()
     res.status(200).json(getTeacherInfo)
     console.log(getTeacherInfo)
 }
