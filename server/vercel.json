@@ -8,8 +8,19 @@
     ],
     "routes": [
         {
+            "dest": "/app.js",
             "src": "/(.*)",
-            "dest": "/app.js"
+            "method": [
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "OPTIONS"
+            ],
+            "header": {
+                "Access-Control-Allow-Origin": "*"
+            }
         }
     ]
 }
