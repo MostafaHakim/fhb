@@ -1,48 +1,39 @@
-require('dotenv').config()
-const express = require('express');
-const app = express();
-const salaryRouter = require('./route/salaryRoute')
-const teacherInfoRoute = require('./route/teacherInfoRoute')
-const cors = require('cors');
-const { default: mongoose } = require('mongoose');
-const MONGODB_URI = process.env.MONGODB_URI
+const express = require('express')
+const app = express()
+const MONGODB_URI = process.env.MONGODB_URI;
+const cors = require('cors')
 
-// ===========cors======json========bodyparser=============
-app.use(cors())
-app.use(express.urlencoded({ extended: true }))
+
+const teacherRouter = require('./route/teacherRouter');
+const { default: mongoose } = require('mongoose');
+
 app.use(express.json())
-// ==================End=============
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
+
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+
 const db = mongoose.connection;
-db.on('error', (err) => { console.log('Mongoose connection error:', err) })
-
-app.get('/', (req, res) => {
-    res.status(202).send("Welcome")
+db.on('error', (err) => {
+    console.log('Mongoose connection error:', err)
 })
-//=================teacher info===========
-app.use('/teacher', teacherInfoRoute)
-//===========Salary Route============
-app.use('/salary', salaryRouter)
+
+
+app.use('/api/teacher',)
 
 
 
-
-
-
-//=============invlid URL=============
 app.use((req, res, next) => {
-    res.status(404).send("Not Found");
-    next();
-})
+    res.send("Not Found")
 
-//===============server Error===========
+})
 app.use((err, req, res, next) => {
-    res.status(500).json({ err: massage })
-})
+    res.status(500).send("Something Wrong")
 
+})
 
 module.exports = app;
