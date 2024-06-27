@@ -5,6 +5,7 @@ const salaryRouter = require('./route/salaryRoute')
 const teacherInfoRoute = require('./route/teacherInfoRoute')
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
+const MONGODB_URI = process.env.MONGODB_URI
 
 // ===========cors======json========bodyparser=============
 app.use(cors())
