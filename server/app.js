@@ -1,15 +1,24 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const salaryRouter = require('./route/salaryRoute')
 const teacherInfoRoute = require('./route/teacherInfoRoute')
-const cors = require('cors')
+const cors = require('cors');
+const { default: mongoose } = require('mongoose');
 
-
-
-
+// ===========cors======json========bodyparser=============
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+// ==================End=============
+
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+const db = mongoose.connection;
+db.on('error', (err) => { console.log('Mongoose connection error:', err) })
+
 app.get('/', (req, res) => {
     res.status(202).send("Welcome")
 })
