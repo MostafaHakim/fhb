@@ -4,8 +4,6 @@ const app = express()
 const cors = require('cors')
 const MONGODB_URI = process.env.MONGODB_URI
 const PORT = process.env.PORT
-
-
 const teacherRoute = require('./routes/teacherRoute')
 const salaryRoute = require('./routes/salaryRoute')
 const monthRoute = require('./routes/monthRoute')
@@ -51,3 +49,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT,()=>{
     console.log(`server is start at the port of ${PORT}`)
 })
+
+module.exports = app;
