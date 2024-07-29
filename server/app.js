@@ -11,7 +11,7 @@ const salaryRoute = require('./routes/salaryRoute')
 const monthRoute = require('./routes/monthRoute')
 const dailyCreaditRoute = require('./routes/dailyCreaditRoute')
 const creaditOrDebitRoute = require('./routes/creditOrDebitRoutes')
-const { configDotenv } = require('dotenv')
+
 
 
 app.use(express.urlencoded({ extended: true }))
