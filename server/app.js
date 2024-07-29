@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const MONGODB_URI = process.env.MONGODB_URI
+const PORT = process.env.PORT
 
 
 const teacherRoute = require('./routes/teacherRoute')
@@ -25,6 +27,30 @@ app.use('/dailycreadit', dailyCreaditRoute)
 app.use('/creditordebit', creaditOrDebitRoute)
 
 
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Database connection established');
+    })
+    .catch(err => {
+        console.error('Database connection error:', err);
+    });
+
+// Connection events
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected to the database');
+});
+
+mongoose.connection.on('error', (err) => {
+    console.error(`Mongoose connection error: ${err}`);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('Mongoose disconnected from the database');
+});
+
+app.listen(PORT, async () => {
+    console.log(`Server is running at the port of ${PORT}`)
+})
 
 
 // =====================Unknown URL =========================
