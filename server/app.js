@@ -20,6 +20,9 @@ app.use(cors({
     allowedHeaders:'Content-Type,Authorization'
 }))
 
+app.use('/', (req,res)=>{
+    res.status.send("Welcome to FHB")
+})
 app.use('/teacher', teacherRoute)
 app.use('/salary', salaryRoute)
 app.use('/month', monthRoute)
