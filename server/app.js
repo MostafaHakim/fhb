@@ -30,12 +30,10 @@ app.use('/dailycreadit', dailyCreaditRoute)
 app.use('/creditordebit', creaditOrDebitRoute)
 
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('Database connection established');
-    })
-    .catch(err => {
-        console.error('Database connection error:', err);
+mongoose.connect(MONGODB_URI,
+    { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true 
     });
 
 // Connection events
