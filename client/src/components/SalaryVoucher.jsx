@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactToPrint from 'react-to-print';
+import logo from '../img/logo.png'
 
 const SalaryVoucher = () => {
     const { tId, month } = useParams()
-
+    const componentRef=useRef()
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -18,7 +20,7 @@ const SalaryVoucher = () => {
     return (
         <>
             <div className="w-full flex flex-col items-center justify-center">
-                <div className="w-2/4 p-4 bg-white">
+                <div className="w-11/12 p-4 bg-white mb-4 m-10"  ref={componentRef}>
                     {data.filter((item) => {
                         if (item.mName == month && item.tId == tId) {
                             return item
@@ -29,8 +31,13 @@ const SalaryVoucher = () => {
                             <>
                                 <div className="w-full border-[1px] border-slate-500" key={i}>
                                     <div className="flex flex-col items-center justify-center border-b-[1px] border-slate-500">
-                                        <h2 className="uppercase text-xl font-bold pt-4">Fazlul Haque Bidhya Niketon</h2>
-                                        <span className="text-md uppercase">{`Voucher For the month of ${item.mName}`}</span>
+                                        <div className="flex flex-row w-full items-center justify-center space-x-4">
+                                            <img className="w-16 p-1" src={logo} alt="FHB" />
+                                            <div className=" flex flex-col items-center justify-center">
+                                                <h2 className="uppercase text-xl font-bold pt-4">Fazlul Haque Bidhya Niketon</h2>
+                                                <span className="text-md uppercase">{`Voucher For the month of ${item.mName}`}</span>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {/* ======================block=============================== */}
@@ -113,7 +120,7 @@ const SalaryVoucher = () => {
                                     <div className=" border-b-[1px] border-slate-500 px-[4px]">
                                         <h2 className="px-2">{`In Words:`}</h2>
                                     </div>
-                                    <div className="flex flex-row w-full px-8 items-center justify-between mt-16">
+                                    <div className="flex flex-row w-full px-8 items-center justify-between mt-20">
                                         <div className="border-t-[1px] border-slate-500 px-4">Accounts</div>
                                         <div className="border-t-[1px] border-slate-500 px-4">Admin</div>
                                         <div className="border-t-[1px] border-slate-500 px-4">Head Mistress</div>
@@ -124,9 +131,11 @@ const SalaryVoucher = () => {
                         )
                     })}
                 </div>
-                <div className="flex flex-row items-center justify-center space-x-4 mt-10">
-                    <button className="capitalize transition-all duration-700 hover:bg-green-600 hover:scale-x-110 text-md px-8 py-2 bg-green-500 text-white shadow-xl">Print</button>
-                    <button className="capitalize transition-all duration-700 hover:bg-orange-600 hover:scale-x-110 text-md px-8 py-2 bg-orange-500 text-white shadow-xl">save</button>
+                <div className="flex flex-row items-center justify-center space-x-4 mt-4">
+                    <ReactToPrint
+                            trigger={() => <button className="capitalize transition-all duration-700 hover:bg-green-600 hover:scale-x-110 text-md px-8 py-2 bg-green-500 text-white shadow-xl">Print</button>}
+                            content={() => componentRef.current}
+      />
                 </div>
             </div>
         </>
