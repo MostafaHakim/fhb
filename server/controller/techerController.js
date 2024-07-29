@@ -6,22 +6,26 @@ const getAllteacher = async (req, res) => {
     res.status(200).json(getTeacher)
 }
 const createTeacher = async (req, res) => {
-    const { tId,
-        tShift,
-        tName,
-        tJoiningDate,
-        tDesignation,
-        tSalary } = req.body
-    const newTeacher = new Teacher({
-        tId,
-        tShift,
-        tName,
-        tJoiningDate,
-        tDesignation,
-        tSalary
-    })
-    const teacherCreate = await newTeacher.save()
-    res.json(teacherCreate)
+    try {
+        const { tId,
+            tShift,
+            tName,
+            tJoiningDate,
+            tDesignation,
+            tSalary } = req.body
+        const newTeacher = new Teacher({
+            tId,
+            tShift,
+            tName,
+            tJoiningDate,
+            tDesignation,
+            tSalary
+        })
+        const teacherCreate = await newTeacher.save()
+        res.status(201).json(teacherCreate)
+    } catch (error) {
+        res.status(504).json(error)
+    }
 }
 
 

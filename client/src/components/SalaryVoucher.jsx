@@ -9,7 +9,7 @@ const SalaryVoucher = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/salary')
+        fetch('https://fhb-api.vercel.app/salary')
             .then(res => {
                 return res.json()
             })

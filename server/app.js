@@ -21,7 +21,7 @@ app.use(cors({
     allowedHeaders:'Content-Type,Authorization'
 }))
 
-app.get('/', (req,res)=>{
+app.use('/', (req,res)=>{
     res.status.send("Welcome to FHB")
 })
 app.use('/teacher', teacherRoute)
