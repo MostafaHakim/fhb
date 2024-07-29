@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -10,6 +11,7 @@ const salaryRoute = require('./routes/salaryRoute')
 const monthRoute = require('./routes/monthRoute')
 const dailyCreaditRoute = require('./routes/dailyCreaditRoute')
 const creaditOrDebitRoute = require('./routes/creditOrDebitRoutes')
+const { configDotenv } = require('dotenv')
 
 
 app.use(express.urlencoded({ extended: true }))
@@ -30,29 +32,12 @@ app.use('/dailycreadit', dailyCreaditRoute)
 app.use('/creditordebit', creaditOrDebitRoute)
 
 
-mongoose.connect(MONGODB_URI,
-    { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true 
-    });
-
-// Connection events
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose connected to the database');
-});
-
-mongoose.connection.on('error', (err) => {
-    console.error(`Mongoose connection error: ${err}`);
-});
-
-mongoose.connection.on('disconnected', () => {
-    console.log('Mongoose disconnected from the database');
-});
-
-app.listen(PORT, async () => {
-    console.log(`Server is running at the port of ${PORT}`)
+mongoose.connect(MONGODB_URI,{
+    useNewUrlParser:true,
+    useUnifiedTopology: true
 })
-
+const db=mongoose.connection;
+db.on('error',console.error.bind(console, 'MongoDB connection error:'))
 
 // =====================Unknown URL =========================
 app.use((req, res, next) => {
@@ -63,7 +48,6 @@ app.use((err, req, res, next) => {
     res.status(500).json(err.massage)
 })
 
-
-
-
-module.exports = app;
+app.listen(PORT,()=>{
+    console.log(`server is start at the port of ${PORT}`)
+})
