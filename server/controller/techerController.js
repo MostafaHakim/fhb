@@ -2,8 +2,12 @@ const Teacher = require('../model/teacherModel')
 
 
 const getAllteacher = async (req, res) => {
-    const getTeacher = await Teacher.find()
-    res.status(200).json(getTeacher)
+    try {
+        const getTeacher = await Teacher.find()
+        res.status(200).json(getTeacher)
+    } catch (error) {
+        res.status(200).json(error)
+    }
 }
 const createTeacher = async (req, res) => {
     try {
