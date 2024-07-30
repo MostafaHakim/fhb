@@ -13,19 +13,20 @@ import AllPersonnel from './components/AllPersonnel'
 import NewSheet from './components/NewSheet'
 
 
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<RootLayouts />}>
         <Route path='/' element={<Home />} />
-        <Route path='/teacher' element={<Teacher />} />
+        <Route path='/teacher' element={<Teacher  />} />
         <Route path='/allpersonnel' element={<AllPersonnel />} />
         <Route path='/advancepayment' element={<AdvancePaymentForm />} />
         <Route path='/students' element={<Students />} />
         <Route path='/managements' element={<Management />} />
         <Route path='/newteacher' element={<NewTeacher />} />
         <Route path='/calculatesalary' element={<SalaryCalculate />} />
-        <Route path='/teacher/salary/:tId/:month' element={<SalaryVoucher />} />
+        <Route path='/teacher/salary/:tId/:month' element={<SalaryVoucher  />} />
         <Route path='/calculatesalary/:tId' element={<SalaryFrom />} />
         {/* =========================Accounts======================================== */}
         <Route path='/newsheet' element={<NewSheet />} />

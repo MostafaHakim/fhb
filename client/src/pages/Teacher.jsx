@@ -13,7 +13,7 @@ const Teacher = () => {
             .then(data => {
                 setSalary(data)
             })
-        fetch('http://localhost:4000/month')
+        fetch('https://fhb-api.vercel.app/month')
             .then(res => {
                 return res.json()
             })
