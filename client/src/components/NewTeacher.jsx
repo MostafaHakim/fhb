@@ -9,6 +9,7 @@ const NewTeacher = () => {
     const [salary, setSalary] = useState('')
     const [newTid, setNewTid] = useState()
     const [success, setSuccess] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     // ===================Fetch============
     useEffect(() => {
@@ -22,7 +23,7 @@ const NewTeacher = () => {
                 })
             })
 
-    }, [])
+    }, [newTid])
 
     const newTeacher = {
         tId: parseInt(newTid) ? parseInt(newTid) + 1 : 201,
