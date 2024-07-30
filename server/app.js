@@ -11,6 +11,12 @@ const monthRoute = require('./routes/monthRoute')
 const dailyCreaditRoute = require('./routes/dailyCreaditRoute')
 const creaditOrDebitRoute = require('./routes/creditOrDebitRoutes')
 
+mongoose.connect(MONGODB_URI,{
+    useNewUrlParser:true,
+    useUnifiedTopology: true
+})
+const db=mongoose.connection;
+db.on('error',console.error.bind(console, 'MongoDB connection error:'))
 
 
 app.use(express.urlencoded({ extended: true }))
@@ -31,12 +37,6 @@ app.use('/dailycreadit', dailyCreaditRoute)
 app.use('/creditordebit', creaditOrDebitRoute)
 
 
-mongoose.connect(MONGODB_URI,{
-    useNewUrlParser:true,
-    useUnifiedTopology: true
-})
-const db=mongoose.connection;
-db.on('error',console.error.bind(console, 'MongoDB connection error:'))
 
 // =====================Unknown URL =========================
 app.use((req, res, next) => {
