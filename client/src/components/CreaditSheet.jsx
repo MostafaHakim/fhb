@@ -16,7 +16,7 @@ function CreaditSheet() {
    
     // ==========================End Item Data=================
     useEffect(() => {
-        fetch('http://localhost:4000/dailycreadit')
+        fetch('https://fhb-api.vercel.app/dailycreadit')
             .then(res => {
                 return res.json()
             })
@@ -31,7 +31,7 @@ function CreaditSheet() {
 
     
     useEffect(() => {
-        fetch('http://localhost:4000/creditordebit')
+        fetch('https://fhb-api.vercel.app/creditordebit')
             .then(res => {
                 return res.json()
             })
@@ -48,7 +48,7 @@ function CreaditSheet() {
     }
     const handelClick = (e) => {
         e.preventDefault(),
-            fetch('http://localhost:4000/dailycreadit', {
+            fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
                 body: JSON.stringify(newCredit),
                 headers: {

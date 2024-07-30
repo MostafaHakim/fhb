@@ -20,7 +20,7 @@ const AdvancePaymentForm = () => {
 
     // ============================================
     useEffect(() => {
-        fetch('http://localhost:4000/teacher')
+        fetch('https://fhb-api.vercel.app/teacher')
             .then(res => {
                 return res.json()
             })
@@ -28,7 +28,7 @@ const AdvancePaymentForm = () => {
                 setData(data)
 
             })
-        fetch('http://localhost:4000/month')
+        fetch('https://fhb-api.vercel.app/month')
             .then(res => {
                 return res.json()
             })
@@ -36,7 +36,7 @@ const AdvancePaymentForm = () => {
                 setMonth(data)
 
             })
-        fetch('http://localhost:4000/salary')
+        fetch('https://fhb-api.vercel.app/salary')
             .then(res => {
                 return res.json()
             })
@@ -70,7 +70,7 @@ const AdvancePaymentForm = () => {
 
     const handelSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:4000/salary', {
+        fetch('https://fhb-api.vercel.app/salary', {
             method: "put",
             body: JSON.stringify(updateSalary),
             headers: {

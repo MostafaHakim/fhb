@@ -15,7 +15,7 @@ function debitSheet() {
 // ===============================================
     
     useEffect(() => {
-        fetch('http://localhost:4000/creditordebit')
+        fetch('https://fhb-api.vercel.app/creditordebit')
             .then(res => {
                 return res.json()
             })
@@ -26,7 +26,7 @@ function debitSheet() {
 // =========================================================
 
     useEffect(() => {
-        fetch('http://localhost:4000/dailycreadit')
+        fetch('https://fhb-api.vercel.app/dailycreadit')
             .then(res => {
                 return res.json()
             })
@@ -46,7 +46,7 @@ function debitSheet() {
     }
     const handelClick = (e) => {
         e.preventDefault(),
-            fetch('http://localhost:4000/dailycreadit', {
+            fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
                 body: JSON.stringify(newDebit),
                 headers: {

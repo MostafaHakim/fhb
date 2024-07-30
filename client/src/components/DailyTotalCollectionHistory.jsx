@@ -8,7 +8,7 @@ function DailyTotalCollectionHistory() {
     let debitTotal = 0;
 
     useEffect(() => {
-        fetch('http://localhost:4000/dailycreadit')
+        fetch('https://fhb-api.vercel.app/dailycreadit')
             .then(res => {
                 return res.json()
             })
@@ -25,7 +25,7 @@ function DailyTotalCollectionHistory() {
             setCTotal(creditTotal)
     }, [data])
     useEffect(() => {
-        fetch('http://localhost:4000/dailycreadit')
+        fetch('https://fhb-api.vercel.app/dailycreadit')
             .then(res => {
                 return res.json()
             })

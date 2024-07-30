@@ -5,7 +5,7 @@ const CreditOrDebitOption = () => {
     const [optionType, setOptionType] = useState('')
     const handelClick = (e) => {
         e.preventDefault()
-        fetch('http://localhost:4000/creditordebit', {
+        fetch('https://fhb-api.vercel.app/creditordebit', {
             method: 'post',
             body: JSON.stringify({ optionName, optionType }),
             headers: {

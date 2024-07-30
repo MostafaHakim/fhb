@@ -6,7 +6,7 @@ const AllPersonnel = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/teacher')
+        fetch('https://fhb-api.vercel.app/teacher')
             .then(res => {
                 return res.json()
             })
@@ -17,14 +17,14 @@ const AllPersonnel = () => {
 
     const handelDelete = (e) => {
         e.preventDefault()
-        fetch('http://localhost:4000/teacher', {
+        fetch('https://fhb-api.vercel.app/teacher', {
             method: "delete",
             body: JSON.stringify({ tId }),
             headers: {
                 "Content-Type": "application/json"
             }
         })
-        fetch('http://localhost:4000/salary', {
+        fetch('https://fhb-api.vercel.app/salary', {
             method: "delete",
             body: JSON.stringify({ tId }),
             headers: {

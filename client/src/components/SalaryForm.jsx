@@ -42,7 +42,7 @@ const SalaryFrom = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/teacher')
+        fetch('https://fhb-api.vercel.app/teacher')
             .then(res => {
                 return res.json()
             })
@@ -67,7 +67,7 @@ const SalaryFrom = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/salary')
+        fetch('https://fhb-api.vercel.app/salary')
             .then(res => {
                 return res.json()
             })
@@ -85,7 +85,7 @@ const SalaryFrom = () => {
         })
     }, [mName,])
     useEffect(() => {
-        fetch('http://localhost:4000/month')
+        fetch('https://fhb-api.vercel.app/month')
             .then(res => {
                 return res.json()
             })
@@ -115,7 +115,7 @@ const SalaryFrom = () => {
     }
     const handelSubmit = async (e) => {
         e.preventDefault()
-        auth ? await fetch('http://localhost:4000/salary', {
+        auth ? await fetch('https://fhb-api.vercel.app/salary', {
             method: 'post',
             body: JSON.stringify(newSalary),
             headers: {

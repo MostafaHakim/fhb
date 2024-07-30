@@ -8,7 +8,7 @@ const SalaryCalculate = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/teacher')
+        fetch('https://fhb-api.vercel.app/teacher')
             .then(res => {
                 return res.json()
             })

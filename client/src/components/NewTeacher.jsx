@@ -34,7 +34,7 @@ const NewTeacher = () => {
     }
     const handelSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:4000/teacher', {
+        fetch('https://fhb-api.vercel.app/teacher', {
             method: "post",
             body: JSON.stringify(newTeacher),
             headers: {
