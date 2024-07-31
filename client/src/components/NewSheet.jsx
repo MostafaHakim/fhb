@@ -9,7 +9,7 @@ import { useState,useEffect } from "react";
 const NewSheet = () => {
     const [isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
- setTimeOut(()=>{
+ setTimeout(async()=>{
         setIsLoading(true)
     },5000)
    },[])
