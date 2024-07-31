@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function debitSheet() {
+function debitSheet({setIsLoading, isLoading}) {
     const [data, setData] = useState([])
     const [option, setOption] = useState([])
     const [total, setTotal] = useState(0)
@@ -10,7 +10,7 @@ function debitSheet() {
     const [purpose, setPurpose] = useState('')
     const [amount, setAmount] = useState('')
     const [qty, setQty] = useState(0)
-    const [isLoading,setIsLoading]=useState(false)
+
 
 
 // ===============================================
@@ -67,7 +67,7 @@ function debitSheet() {
 
   return (
     <>
-    {isLoading ? <div className="col-span-2 w-full text-xs">
+    {!isLoading ? <div className="col-span-2 w-full text-xs">
                                 <h2 className="w-full text-center border-[1px] border-slate-400 border-b-0">Debit</h2>
                                 <div className="w-full grid grid-cols-3 border-[1px] border-b-0 border-slate-400">
                                     <label className="w-full text-center col-span-1 border-r-[1px] border-slate-400">Purpose</label>

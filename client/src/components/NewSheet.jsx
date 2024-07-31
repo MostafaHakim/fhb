@@ -6,14 +6,15 @@ import CreaditSheet from "./CreaditSheet";
 import CreaditOrDebitOption from "./CreditOrDebitOption"
 
 const NewSheet = () => {
+    const [isLoading,setIsLoading]=useState(false)
     const date = new Date()
     return (
         <>
-            <div className="w-full flex flex-col items-center justify-center bg-white px-2">
-                
+            {
+                !isLoading ? <div className="w-full flex flex-col items-center justify-center bg-white px-2">
                 <div className="w-full grid grid-cols-3 gap-4">
                     <div className="col-span-1 w-full">
-                      <DailyTotalCollectionHistory />
+                      <DailyTotalCollectionHistory setIsLoading={setIsLoading} isLoading={isLoading}/>
                     </div>
                     <div className="w-full col-span-2 bg-white rounded-md">
                         <div className="w-full flex flex-col items-center justify-center p-1">
@@ -28,16 +29,17 @@ const NewSheet = () => {
                         </div>
                         <div className="grid grid-cols-5 gap-2 p-1">
                             {/* ================================Creadit=================================================== */}
-                            <CreaditSheet />
+                            <CreaditSheet setIsLoading={setIsLoading} isLoading={isLoading}/>
                             {/* ================================Debit=================================================== */}
-                           <DebitSheet />
+                           <DebitSheet setIsLoading={setIsLoading} isLoading={isLoading}/>
                         </div>
                         <div className="w-full">
-                            <CreaditOrDebitOption />
+                            <CreaditOrDebitOption setIsLoading={setIsLoading} isLoading={isLoading}/>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>: "Loading..."
+            }
         </>
     );
 }
