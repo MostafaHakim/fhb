@@ -15,7 +15,7 @@ const NewSheet = () => {
                 !isLoading ? <div className="w-full flex flex-col items-center justify-center bg-white px-2">
                 <div className="w-full grid grid-cols-3 gap-4">
                     <div className="col-span-1 w-full">
-                      <DailyTotalCollectionHistory setIsLoading={setIsLoading} isLoading={isLoading}/>
+                      <DailyTotalCollectionHistory />
                     </div>
                     <div className="w-full col-span-2 bg-white rounded-md">
                         <div className="w-full flex flex-col items-center justify-center p-1">
@@ -35,7 +35,7 @@ const NewSheet = () => {
                            <DebitSheet setIsLoading={setIsLoading} isLoading={isLoading}/>
                         </div>
                         <div className="w-full">
-                            <CreaditOrDebitOption setIsLoading={setIsLoading} isLoading={isLoading}/>
+                            <CreaditOrDebitOption />
                         </div>
                     </div>
                 </div>

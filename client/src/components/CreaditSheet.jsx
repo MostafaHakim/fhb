@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-function CreaditSheet({setIsLoading, isLoading}) {
+function CreaditSheet({setIsLoading}) {
     const [data, setData] = useState([])
     const [option, setOption] = useState([])
     // ==========================From Data====================
@@ -66,8 +66,8 @@ function CreaditSheet({setIsLoading, isLoading}) {
 
   return (   
     <>
-    {
-        !isLoading ? <div className="col-span-3 w-full flex flex-col text-xs">
+    
+    <div className="col-span-3 w-full flex flex-col text-xs">
         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
         <div className="w-full grid grid-cols-5 border-[1px] border-b-0 border-slate-400">
             <label className="w-full text-center col-span-1 border-r-[1px] border-slate-400">Purpose</label>
@@ -124,8 +124,7 @@ function CreaditSheet({setIsLoading, isLoading}) {
                 </div>
             </form>
         </div>
-    </div> : "Loading..."
-    }
+    </div> 
     </>
   )
 }
