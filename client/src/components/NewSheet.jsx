@@ -9,8 +9,9 @@ import { useState,useEffect } from "react";
 const NewSheet = () => {
     const [isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
- setTimeout(async()=>{
         setIsLoading(true)
+ setTimeout(async()=>{
+        setIsLoading(false)
     },5000)
    },[])
     
