@@ -54,6 +54,7 @@ function CreaditSheet({setIsLoading}) {
     const handelClick = (e) => {
         e.preventDefault(),
         setIsLoading(true)
+        setTimeout(()=>{
             fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
                 body: JSON.stringify(newCredit),
@@ -62,6 +63,7 @@ function CreaditSheet({setIsLoading}) {
                 }
             })
             setIsLoading(false)
+        },2000)
     }
 
   return (   
