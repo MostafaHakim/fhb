@@ -57,7 +57,7 @@ function CreaditSheet() {
             })
     }
 
-  return (
+  return (   
     <>
                             <div className="col-span-3 w-full flex flex-col text-xs">
                                 <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
