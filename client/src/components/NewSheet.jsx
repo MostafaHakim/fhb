@@ -39,9 +39,9 @@ const NewSheet = () => {
     
     return (
         <>
-        {!isLoading && <div className="absolute bg-slate-300 bg-opacity-20 top-0 left-0 w-full h-screen m-auto">
+        {!data && (<div className="absolute bg-slate-300 bg-opacity-20 top-0 left-0 w-full h-screen m-auto">
                             <LoderSpinner color="#67f2d1" />
-                        </div>
+                        </div>)
         }
         {
             data && <div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
