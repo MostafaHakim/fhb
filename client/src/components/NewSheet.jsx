@@ -31,7 +31,7 @@ const NewSheet = () => {
             })
             
             setIsLoading(false)
-    }, [data,option,total])
+    }, [data,option])
 
    
     const [isLoading,setIsLoading]=useState(false)
