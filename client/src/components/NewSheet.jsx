@@ -4,17 +4,10 @@ import DebitSheet from "./DebitSheet";
 import DailyTotalCollectionHistory from "./DailyTotalCollectionHistory";
 import CreaditSheet from "./CreaditSheet";
 import CreaditOrDebitOption from "./CreditOrDebitOption"
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 const NewSheet = () => {
     const [isLoading,setIsLoading]=useState(false)
-    useEffect(()=>{
-        setIsLoading(true)
- setTimeout(async()=>{
-        setIsLoading(false)
-    },5000)
-   },[])
-    
     const date = new Date()
     return (
         <>
