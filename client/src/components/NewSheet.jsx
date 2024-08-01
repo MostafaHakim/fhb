@@ -38,9 +38,13 @@ const NewSheet = () => {
    
     
     return (
-        <>{
-            data&&
-            option&&  <div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
+        <>
+        {!isLoading && <div className="absolute bg-slate-300 bg-opacity-20 top-0 left-0 w-full h-screen m-auto">
+                            <LoderSpinner color="#67f2d1" />
+                        </div>
+        }
+        {
+            data && <div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
             <div className="w-full grid grid-cols-3 gap-4">
                 <div className="col-span-1 w-full">
                   <DailyTotalCollectionHistory />
@@ -69,10 +73,6 @@ const NewSheet = () => {
             </div>
         </div>
         }
-               
-           {!isLoading && <div className="absolute bg-slate-300 bg-opacity-20 top-0 left-0 w-full h-screen m-auto">
-                            <LoderSpinner color="#67f2d1" />
-                        </div>}
         </>
     );
 }
