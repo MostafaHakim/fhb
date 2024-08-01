@@ -10,8 +10,10 @@ import LoderSpinner from "./LoderSpinner";
 const NewSheet = () => {
     const [data, setData] = useState([])
     const [option, setOption] = useState([])
+    const [isLoading,setIsLoading]=useState(false)
+    const date = new Date()
     
-    let totalAmount = 0;
+  
     // ==========================End Item Data=================
     useEffect(() => {
         setIsLoading(true)
@@ -34,8 +36,7 @@ const NewSheet = () => {
     }, [data,option])
 
    
-    const [isLoading,setIsLoading]=useState(false)
-    const date = new Date()
+    
     return (
         <>{
             data&&
