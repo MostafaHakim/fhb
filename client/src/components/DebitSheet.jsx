@@ -45,7 +45,7 @@ function debitSheet({setIsLoading}) {
     }
     const handelClick = (e) => {
         e.preventDefault(),
-        setIsLoading(true)
+      
             fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
                 body: JSON.stringify(newDebit),
@@ -53,7 +53,6 @@ function debitSheet({setIsLoading}) {
                     "Content-Type": "application/json"
                 }
             })
-            setIsLoading(false)
     }
 
   return (

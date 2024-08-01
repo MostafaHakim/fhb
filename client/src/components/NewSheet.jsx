@@ -60,7 +60,7 @@ const NewSheet = () => {
                         {/* ================================Creadit=================================================== */}
                         <CreaditSheet setIsLoading={setIsLoading} data={data} option={option} />
                         {/* ================================Debit=================================================== */}
-                       <DebitSheet setIsLoading={setIsLoading} isLoading={isLoading}/>
+                       <DebitSheet/>
                     </div>
                     <div className="w-full">
                         <CreaditOrDebitOption />
