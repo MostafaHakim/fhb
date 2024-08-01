@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-function CreaditSheet({setIsLoading,data,option}) {
+function CreaditSheet({data,option}) {
    
     // ==========================From Data====================
     const [purpose, setPurpose] = useState('')
@@ -35,8 +35,6 @@ function CreaditSheet({setIsLoading,data,option}) {
     }
   return (   
     <>
-    
-    
       <div className="col-span-3 w-full flex flex-col text-xs">
         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
         <div className="w-full grid grid-cols-5 border-[1px] border-b-0 border-slate-400">
@@ -62,8 +60,6 @@ function CreaditSheet({setIsLoading,data,option}) {
                 )
             })
         }
-
-
         <div className="w-full grid grid-cols-5  border-[1px] border-slate-400 text-xs">
             <label className="col-span-2 w-full text-center  border-r-[1px] border-slate-400 capitalize">Total</label>
             <label className="w-full ml-24 col-span-3">{total}</label>

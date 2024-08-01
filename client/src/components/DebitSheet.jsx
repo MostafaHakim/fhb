@@ -16,7 +16,6 @@ function debitSheet({setIsLoading}) {
 // ===============================================
     
     useEffect(() => {
-        setIsLoading(true)
         fetch('https://fhb-api.vercel.app/dailycreadit')
             .then(res => {
                 return res.json()
@@ -32,7 +31,6 @@ function debitSheet({setIsLoading}) {
                 setOption(data)
             })
             setTotal(totalAmount)
-            setIsLoading(false)
     }, [data,option,total])
 // =========================================================
 
@@ -45,16 +43,14 @@ function debitSheet({setIsLoading}) {
     }
     const handelClick = (e) => {
         e.preventDefault(),
-      
             fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
                 body: JSON.stringify(newDebit),
                 headers: {
                     "Content-Type": "application/json"
                 }
-            })
+         })
     }
-
   return (
     <>
                 <div className="col-span-2 w-full text-xs">
