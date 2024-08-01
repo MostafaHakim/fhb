@@ -24,12 +24,10 @@ function CreaditSheet({setIsLoading}) {
                 setData(data)
             })
             setIsLoading(false)
-    }, [])
+    }, [data])
 
     useEffect(()=>{
-        
         setTotal(totalAmount)
-        
     },[total])
 
     
@@ -43,7 +41,7 @@ function CreaditSheet({setIsLoading}) {
                 setOption(data)
             })
             setIsLoading(false)
-    }, [])
+    }, [option])
 
     const newCredit = {
         cPurpose: purpose,
@@ -99,7 +97,7 @@ function CreaditSheet({setIsLoading}) {
 
         <div className="w-full grid grid-cols-5  border-[1px] border-slate-400 text-xs">
             <label className="col-span-2 w-full text-center  border-r-[1px] border-slate-400 capitalize">Total</label>
-            <label className="w-full ml-24 col-span-3">{total}</label>
+            <label className="w-full ml-24 col-span-3">{}</label>
         </div>
         <div className=" border-[1px] border-sky-500 mt-2">
             <div className="w-full grid grid-cols-5 p-1 text-xs">
