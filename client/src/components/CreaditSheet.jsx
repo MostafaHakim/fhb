@@ -23,25 +23,16 @@ function CreaditSheet({setIsLoading}) {
             .then(data => {
                 setData(data)
             })
-            setIsLoading(false)
-    }, [data])
-
-    useEffect(()=>{
-        setTotal(totalAmount)
-    },[total])
-
-    
-    useEffect(() => {
-        setIsLoading(true)
-        fetch('https://fhb-api.vercel.app/creditordebit')
+            fetch('https://fhb-api.vercel.app/creditordebit')
             .then(res => {
                 return res.json()
             })
             .then(data => {
                 setOption(data)
             })
+            setTotal(totalAmount)
             setIsLoading(false)
-    }, [option])
+    }, [data,option,total])
 
     const newCredit = {
         cPurpose: purpose,
@@ -68,6 +59,7 @@ function CreaditSheet({setIsLoading}) {
     <>
     
     {
+
       <div className="col-span-3 w-full flex flex-col text-xs">
         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
         <div className="w-full grid grid-cols-5 border-[1px] border-b-0 border-slate-400">
