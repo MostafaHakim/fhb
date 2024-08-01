@@ -1,49 +1,30 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-function CreaditSheet({setIsLoading}) {
-    const [data, setData] = useState([])
-    const [option, setOption] = useState([])
+function CreaditSheet({setIsLoading,data,option}) {
+   
     // ==========================From Data====================
     const [purpose, setPurpose] = useState('')
     const [amount, setAmount] = useState('')
     const [qty, setQty] = useState('')
-    const [total, setTotal] = useState(0)
+    
     // ==========================End From Data=================
+    const [total, setTotal] = useState(0)
     // ==========================Item Data=================
-    let totalAmount = 0;
-   
-    // ==========================End Item Data=================
-    useEffect(() => {
-        setIsLoading(true)
-        fetch('https://fhb-api.vercel.app/dailycreadit')
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                setData(data)
-            })
-            fetch('https://fhb-api.vercel.app/creditordebit')
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                setOption(data)
-            })
-            setTotal(totalAmount)
-            setIsLoading(false)
-    }, [data,option,total])
-
+    useEffect(()=>{
+        setTotal(totalAmount)
+    },[total])
+    
     const newCredit = {
         cPurpose: purpose,
         cType:"Credit",
         cAmount: amount,
         cQty: qty
     }
+   
     const handelClick = (e) => {
         e.preventDefault(),
         setIsLoading(true)
-        setTimeout(()=>{
             fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
                 body: JSON.stringify(newCredit),
@@ -52,14 +33,11 @@ function CreaditSheet({setIsLoading}) {
                 }
             })
             setIsLoading(false)
-        },2000)
     }
-
   return (   
     <>
     
-    {
-
+    
       <div className="col-span-3 w-full flex flex-col text-xs">
         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
         <div className="w-full grid grid-cols-5 border-[1px] border-b-0 border-slate-400">
@@ -112,13 +90,12 @@ function CreaditSheet({setIsLoading}) {
                     </select>
                     <input type="text" className="col-span-1 w-full text-center focus:outline-none border-[1px] border-slate-300" onChange={(e) => { setQty(e.target.value) }} />
                     <input type="text" className="col-span-2 w-full text-center focus:outline-none border-[1px] border-slate-300" onChange={(e) => { setAmount(e.target.value) }} />
-
                     <button className="col-span-1 px-4 py-1 bg-green-700 text-white text-xs">Add Feilds</button>
                 </div>
             </form>
         </div>
     </div> 
-    }
+    
     </>
   )
 }
