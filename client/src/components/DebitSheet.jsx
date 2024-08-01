@@ -17,19 +17,6 @@ function debitSheet({setIsLoading}) {
     
     useEffect(() => {
         setIsLoading(true)
-        fetch('https://fhb-api.vercel.app/creditordebit')
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                setOption(data)
-            })
-            setIsLoading(false)
-    }, [])
-// =========================================================
-
-    useEffect(() => {
-        setIsLoading(true)
         fetch('https://fhb-api.vercel.app/dailycreadit')
             .then(res => {
                 return res.json()
@@ -37,14 +24,18 @@ function debitSheet({setIsLoading}) {
             .then(data => {
                 setData(data)
             })
+        fetch('https://fhb-api.vercel.app/creditordebit')
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setOption(data)
+            })
+            setTotal(totalAmount)
             setIsLoading(false)
-    }, [])
-   
-    useEffect(() => {
-        setIsLoading(true)
-        setTotal(totalAmount)
-        setIsLoading(false)
-    }, [])
+    }, [data,option,total])
+// =========================================================
+
 
     const newDebit = {
         cPurpose: purpose,
@@ -113,7 +104,6 @@ function debitSheet({setIsLoading}) {
                                                 })}
                                             </select>
                                             <input type="text" className="col-span-1 w-full text-center focus:outline-none border-[1px] border-slate-300" onChange={(e) => { setAmount(e.target.value) }} />
-
                                             <button className="col-span-1 px-2 py-1 bg-green-700 text-white text-[10px]">Add Feilds</button>
                                         </div>
                                     </form>
