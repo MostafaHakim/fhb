@@ -27,9 +27,9 @@ function CreaditSheet({setIsLoading}) {
     }, [])
 
     useEffect(()=>{
-        setIsLoading(true)
+        
         setTotal(totalAmount)
-        setIsLoading(false)
+        
     },[total])
 
     
@@ -69,7 +69,8 @@ function CreaditSheet({setIsLoading}) {
   return (   
     <>
     
-    <div className="col-span-3 w-full flex flex-col text-xs">
+    {
+        data && option && <div className="col-span-3 w-full flex flex-col text-xs">
         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
         <div className="w-full grid grid-cols-5 border-[1px] border-b-0 border-slate-400">
             <label className="w-full text-center col-span-1 border-r-[1px] border-slate-400">Purpose</label>
@@ -127,6 +128,7 @@ function CreaditSheet({setIsLoading}) {
             </form>
         </div>
     </div> 
+    }
     </>
   )
 }
