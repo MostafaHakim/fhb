@@ -5,7 +5,7 @@ import DailyTotalCollectionHistory from "./DailyTotalCollectionHistory";
 import CreaditSheet from "./CreaditSheet";
 import CreaditOrDebitOption from "./CreditOrDebitOption"
 import { useState } from "react";
-import LoderSpinner from "./LoderSpinner";
+import LoderSpinner from "./LoderSpinner/LoderSpinner";
 
 const NewSheet = () => {
     const [isLoading,setIsLoading]=useState(false)
