@@ -40,7 +40,7 @@ const NewSheet = () => {
                         </div>
                     </div>
                 </div>
-            </div>: <LoderSpinner />
+            </div>: <LoderSpinner color={"#7fb3d5"} />
             }
         </>
     );
