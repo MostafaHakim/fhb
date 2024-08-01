@@ -10,11 +10,12 @@ function CreaditSheet({setIsLoading,data,option}) {
     
     // ==========================End From Data=================
     const [total, setTotal] = useState(0)
+    let totalAmount = 0;
     // ==========================Item Data=================
     useEffect(()=>{
         setTotal(totalAmount)
     },[total])
-    
+
     const newCredit = {
         cPurpose: purpose,
         cType:"Credit",
