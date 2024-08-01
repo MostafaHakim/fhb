@@ -1,8 +1,11 @@
 import React from 'react'
+import DotLoader from 'react-spinners'
 
 function LoderSpinner() {
   return (
-    <div>LoderSpinner</div>
+    <div>
+        <DotLoader />
+    </div>
   )
 }
 
