@@ -57,7 +57,7 @@ const NewSheet = () => {
                     </div>
                     <div className="grid grid-cols-5 gap-2 p-1">
                         {/* ================================Creadit=================================================== */}
-                        <CreaditSheet setIsLoading={setIsLoading} data={data} option={option} totalAmount={totalAmount} handelClick={handelClick}/>
+                        <CreaditSheet setIsLoading={setIsLoading} data={data} option={option} totalAmount={totalAmount} />
                         {/* ================================Debit=================================================== */}
                        <DebitSheet setIsLoading={setIsLoading} isLoading={isLoading}/>
                     </div>
