@@ -31,9 +31,9 @@ const NewSheet = () => {
             .then(data => {
                 setOption(data)
             })
-            
+            setTimeout(()=>{
                 setIsLoading(false)
-   
+            },2000)
             
     }, [])
 
