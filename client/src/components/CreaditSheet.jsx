@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-function CreaditSheet({data,option,setIsLoading}) {
+function CreaditSheet({data,option}) {
    
     // ==========================From Data====================
     const [purpose, setPurpose] = useState('')
@@ -24,7 +24,7 @@ function CreaditSheet({data,option,setIsLoading}) {
     }
    
     const handelClick = (e) => {
-        setIsLoading(true)
+       
         e.preventDefault(),
             fetch('https://fhb-api.vercel.app/dailycreadit', {
                 method: 'post',
@@ -33,7 +33,7 @@ function CreaditSheet({data,option,setIsLoading}) {
                     "Content-Type": "application/json"
                 }
             })
-            setIsLoading(false)
+          
     }
   return (   
     <>
