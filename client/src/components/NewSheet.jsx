@@ -31,8 +31,10 @@ const NewSheet = () => {
             .then(data => {
                 setOption(data)
             })
+            setTimeout(()=>{
+                setIsLoading(false)
+            },5000)
             
-            setIsLoading(false)
     }, [])
 
    
@@ -60,7 +62,7 @@ const NewSheet = () => {
                     </div>
                     <div className="grid grid-cols-5 gap-2 p-1">
                         {/* ================================Creadit=================================================== */}
-                        <CreaditSheet setIsLoading={setIsLoading} data={data} option={option} />
+                        <CreaditSheet data={data} option={option} />
                         {/* ================================Debit=================================================== */}
                        <DebitSheet />
                     </div>
