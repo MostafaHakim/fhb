@@ -37,8 +37,7 @@ function CreaditSheet({data,option,setIsLoading}) {
     }
   return (   
     <>
-    {
-    data &&
+    
         <div className="col-span-3 w-full flex flex-col text-xs">
             <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Credit</h2>
             <div className="w-full grid grid-cols-5 border-[1px] border-b-0 border-slate-400">
@@ -94,7 +93,6 @@ function CreaditSheet({data,option,setIsLoading}) {
                 </form>
             </div>
         </div>
-     }
     </>
   )
 }
