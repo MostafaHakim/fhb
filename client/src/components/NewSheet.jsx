@@ -22,7 +22,7 @@ const NewSheet = () => {
                 return res.json()
             })
             .then(data => {
-                setData('')
+                setData(data)
             })
             fetch('https://fhb-api.vercel.app/creditordebit')
             .then(res => {
@@ -39,7 +39,7 @@ const NewSheet = () => {
     
     return (
         <>
-        {!data && (<div className="absolute bg-slate-300 bg-opacity-20 top-0 left-0 w-full h-screen m-auto">
+        {data && (<div className="absolute bg-slate-300 bg-opacity-20 top-0 left-0 w-full h-screen m-auto">
                             <LoderSpinner color="#67f2d1" />
                         </div>)
         }
