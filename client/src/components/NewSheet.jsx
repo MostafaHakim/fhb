@@ -22,7 +22,7 @@ const NewSheet = () => {
                 return res.json()
             })
             .then(data => {
-                setData(data)
+                setData('')
             })
             fetch('https://fhb-api.vercel.app/creditordebit')
             .then(res => {
@@ -33,7 +33,7 @@ const NewSheet = () => {
             })
             
             setIsLoading(false)
-    }, [data,option])
+    }, [])
 
    
     
@@ -44,7 +44,7 @@ const NewSheet = () => {
                         </div>)
         }
         {
-            data && <div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
+            data && (<div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
             <div className="w-full grid grid-cols-3 gap-4">
                 <div className="col-span-1 w-full">
                   <DailyTotalCollectionHistory />
@@ -64,14 +64,14 @@ const NewSheet = () => {
                         {/* ================================Creadit=================================================== */}
                         <CreaditSheet setIsLoading={setIsLoading} data={data} option={option} />
                         {/* ================================Debit=================================================== */}
-                       <DebitSheet/>
+                       <DebitSheet />
                     </div>
                     <div className="w-full">
                         <CreaditOrDebitOption />
                     </div>
                 </div>
             </div>
-        </div>
+        </div>)
         }
         </>
     );
