@@ -41,8 +41,8 @@ const NewSheet = () => {
     
     return (
         <>
-        { isLoading && <LoderSpinner /> }
-        {<div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
+        <div className="w-full flex flex-col items-center justify-center bg-white px-2 relative">
+            { isLoading && <LoderSpinner /> }
             <div className="w-full grid grid-cols-3 gap-4">
                 <div className="col-span-1 w-full">
                   <DailyTotalCollectionHistory />
@@ -70,7 +70,7 @@ const NewSheet = () => {
                 </div>
             </div>
         </div>
-        }
+        
         </>
     );
 }
