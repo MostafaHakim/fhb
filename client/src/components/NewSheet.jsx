@@ -59,7 +59,7 @@ const NewSheet = () => {
                         </div>
                         <div className="grid grid-cols-5 gap-2 p-1">
                             {/* ================================Creadit=================================================== */}
-                            <CreaditSheet data={data} option={option} />
+                            <CreaditSheet data={data} option={option} setIsLoading={setIsLoading} isLoading={isLoading} />
                             {/* ================================Debit=================================================== */}
                             <DebitSheet />
                         </div>
