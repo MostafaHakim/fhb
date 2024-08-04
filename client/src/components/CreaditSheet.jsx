@@ -7,6 +7,7 @@ function CreaditSheet({ data, option }) {
     const [purpose, setPurpose] = useState('')
     const [amount, setAmount] = useState('')
     const [qty, setQty] = useState('')
+    const [ctyp, setCtype] = useState('')
 
     // ==========================End From Data=================
     const [total, setTotal] = useState(0)
@@ -18,7 +19,7 @@ function CreaditSheet({ data, option }) {
 
     const newCredit = {
         cPurpose: purpose,
-        cType: "Credit",
+        cType: ctyp,
         cAmount: amount,
         cQty: qty
     }
@@ -48,17 +49,40 @@ function CreaditSheet({ data, option }) {
                     <button className=" w-full text-center col-span-1">Action</button>
                 </div>
                 {
-                    data.filter(item => {
-                        if (item.cType == "Credit") {
-                            return item
-                        }
-                    }).map(item => {
+                    data.map(item => {
                         totalAmount += item.cAmount
                         return (
                             <div className="w-full grid grid-cols-5 border-b-0 text-xs border-[1px] border-slate-400" >
                                 <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{item.cPurpose}</label>
                                 <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{item.cQty}</label>
-                                <label className="col-span-2 w-full text-center  border-r-[1px] border-slate-400 ">{item.cAmount}</label>
+                                {data.filter(item => {
+                                    if (item.cType == "Credit") {
+                                        return item
+                                    }
+                                }).map(item => {
+                                    return (
+                                        <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{item.cType}</label>
+                                    )
+                                })}
+
+                                {data.filter(item => {
+                                    if (item.cType == "Debit") {
+                                        return item
+                                    }
+                                }).map(item => {
+                                    return (
+                                        <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{item.cType}</label>
+                                    )
+                                })}
+                                {data.filter(item => {
+                                    if (item.cType == "IOU") {
+                                        return item
+                                    }
+                                }).map(item => {
+                                    return (
+                                        <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{item.cType}</label>
+                                    )
+                                })}
                                 <label className="col-span-1 w-full text-center "></label>
                             </div>
                         )
@@ -72,22 +96,25 @@ function CreaditSheet({ data, option }) {
                     <div className="w-full grid grid-cols-5 p-1 text-xs">
                         <label className="w-full text-center col-span-1">Purpose</label>
                         <label className="w-full text-center col-span-1">Qty</label>
-                        <label className=" w-full text-center col-span-2">Amount</label>
-                        <button className=" w-full text-center col-span-1">Action</button>
+                        <label className=" w-full text-center col-span-2">Credit</label>
+                        <label className=" w-full text-center col-span-2">Debit</label>
+                        <label className=" w-full text-center col-span-2">Iou</label>
                     </div>
                     <form className="w-full" onSubmit={handelClick}>
                         <div className="w-full grid grid-cols-5 p-1 gap-4 text-xs ">
                             <select className="col-span-1 w-full text-center focus:outline-none border-[1px] border-slate-300" type="text" onChange={(e) => { setPurpose(e.target.value) }}>
                                 <option value={option}>--Select One--</option>
-                                {option.filter(item => {
-                                    if (item.optionType == "Credit") {
-                                        return item
-                                    }
-                                }).map(item => {
+                                {option.map(item => {
                                     return (<option>{item.optionName}</option>)
                                 })}
                             </select>
                             <input type="text" className="col-span-1 w-full text-center focus:outline-none border-[1px] border-slate-300" onChange={(e) => { setQty(e.target.value) }} />
+                            <select className="col-span-1 w-full text-center focus:outline-none border-[1px] border-slate-300" type="text" onChange={(e) => { setCtype(e.target.value) }}>
+                                <option >--Select One--</option>
+                                <option >Debit</option>
+                                <option >Credit</option>
+                                <option >IOU</option>
+                            </select>
                             <input type="text" className="col-span-2 w-full text-center focus:outline-none border-[1px] border-slate-300" onChange={(e) => { setAmount(e.target.value) }} />
                             <button className="col-span-1 px-4 py-1 bg-green-700 text-white text-xs">Add Feilds</button>
                         </div>
