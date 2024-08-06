@@ -11,6 +11,7 @@ import SalaryVoucher from './components/SalaryVoucher'
 import AdvancePaymentForm from './components/AdvancePaymentForm'
 import AllPersonnel from './components/AllPersonnel'
 import NewSheet from './components/NewSheet'
+import PrintSheet from './components/PrintSheet'
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/calculatesalary/:tId' element={<SalaryFrom />} />
         {/* =========================Accounts======================================== */}
         <Route path='/newsheet' element={<NewSheet />} />
+        <Route path='/printsheet' element={<PrintSheet />} />
       </Route>
     )
   )
