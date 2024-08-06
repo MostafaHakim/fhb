@@ -57,7 +57,7 @@ console.log(date)
             <div className='w-full'>
                 <div className='w-10/12 m-auto p-1 grid grid-cols-4 gap-4'>
                     <div className='col-span-1'>
-                        <DailyTotalCollectionHistory data={data} />
+                        <DailyTotalCollectionHistory data={data} date={date} />
                     </div>
                     <div className="w-full flex flex-col items-center justify-center p-1 col-span-3">
                         <h2 className="text-sm uppercase">Fazlul Haque Bidhya Niketon</h2>
