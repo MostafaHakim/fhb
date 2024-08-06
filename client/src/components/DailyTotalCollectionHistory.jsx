@@ -1,10 +1,14 @@
 
-function DailyTotalCollectionHistory({ data }) {
+function DailyTotalCollectionHistory({ data,date }) {
 
     let creditTotal = 0
     let debitTotal = 0;
     let iouTotal = 0;
-    data.map(item => {
+    data.filter(item=>{
+        if(item.cDate==date){
+            return item
+        }
+    }).map(item => {
         item.cType == "Credit" ? creditTotal += item.cAmount : creditTotal;
         item.cType == "Debit" ? debitTotal += item.cAmount : debitTotal;
         item.cType == "IOU" ? iouTotal += item.cAmount : iouTotal;
