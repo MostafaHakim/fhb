@@ -77,7 +77,11 @@ console.log(date)
                             <label className=" w-full text-center col-span-1 border-r-[1px] border-slate-400">Iou</label>
                         </div>
                         {
-                            data.map(item => {
+                            data.filter(item=>{
+                                if(item.cDate==date){
+                                    return item
+                                }
+                            }).map(item => {
                                 item.cType == "Credit" ? creditTotal += item.cAmount : creditTotal;
                                 item.cType == "Debit" ? debitTotal += item.cAmount : debitTotal;
                                 item.cType == "IOU" ? iouTotal += item.cAmount : iouTotal;
