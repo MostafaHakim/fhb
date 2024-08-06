@@ -3,6 +3,7 @@ import CreaditSheet from "./CreaditSheet";
 import CreaditOrDebitOption from "./CreditOrDebitOption"
 import { useState, useEffect } from "react";
 import LoderSpinner from '../components/LoderSpinner'
+import { Link } from "react-router-dom";
 
 const NewSheet = () => {
     const [data, setData] = useState([])
@@ -47,7 +48,7 @@ const NewSheet = () => {
                 <CreaditSheet data={data} option={option} setLoading={setLoading} />
                 <div className="w-10/12 m-auto mt-10 grid grid-cols-4 gap-4">
                     <div className="col-span-1">
-
+                        <Link to="/printsheet">Print Sheets</Link>
                     </div>
                     <div className="col-span-3">
                         <CreaditOrDebitOption setLoading={setLoading} />
