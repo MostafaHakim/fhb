@@ -23,23 +23,6 @@ const PrintSheet = () => {
                 setData(data)
             })
     }, [data,])
-    useEffect(() => {
-
-        fetch('https://fhb-api.vercel.app/creditordebit')
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                setOption(data)
-            })
-    }, [option])
-    useEffect(() => {
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000)
-    }, [])
-
 
     return (
         <>
@@ -85,15 +68,6 @@ const PrintSheet = () => {
                             <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{creditTotal}</label>
                             <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{debitTotal}</label>
                             <label className="col-span-1 w-full text-center  border-r-[1px] border-slate-400 capitalize">{iouTotal}</label>
-                        </div>
-                        <div className="w-full border-[1px] border-sky-500 mt-2">
-                            <div className="w-full grid grid-cols-5 p-1 text-xs">
-                                <label className="w-full text-center col-span-1">Type</label>
-                                <label className="w-full text-center col-span-1">Purpose</label>
-                                <label className=" w-full text-center col-span-1">Qty</label>
-                                <label className=" w-full text-center col-span-1">Amount</label>
-                                <label className=" w-full text-center col-span-1"></label>
-                            </div>
                         </div>
                     </div>
         </>
