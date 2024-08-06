@@ -11,6 +11,7 @@ function CreaditSheet({ data, option, setLoading }) {
     const [qty, setQty] = useState('')
     const [ctyp, setCtype] = useState('')
     const [date, setDate] = useState('')
+    const deDate = new Date();
 
 
     // ==============================Total ====================
@@ -64,7 +65,7 @@ console.log(date)
                         <div className="w-full flex flex-row items-center justify-between">
                             <div className="text-xs flex flex-row item-center space-x-2">
                                 <label>Date:</label>
-                                <input type="date" onChange={(e)=>{setDate(e.target.value)}}/>
+                                <input type="date" value={deDate} onChange={(e)=>{setDate(e.target.value)}}/>
                             </div>
                         </div>
                         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Balance Sheets</h2>
