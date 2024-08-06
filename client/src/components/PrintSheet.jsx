@@ -4,8 +4,8 @@ import LoderSpinner from '../components/LoderSpinner'
 
 const PrintSheet = () => {
     const [data, setData] = useState([])
-    const [option, setOption] = useState([])
     const [loading, setLoading] = useState(false)
+    const [date,setDate] = useState('')
 
     let creditTotal = 0
     let debitTotal = 0;
@@ -45,7 +45,11 @@ const PrintSheet = () => {
                             <label className=" w-full text-center col-span-1 border-r-[1px] border-slate-400">Iou</label>
                         </div>
                         {
-                            data.map(item => {
+                            data.filter(item=>{
+                                if(item.cDate==date){
+                                    return item
+                                }
+                            }).map(item => {
                                 item.cType == "Credit" ? creditTotal += item.cAmount : creditTotal;
                                 item.cType == "Debit" ? debitTotal += item.cAmount : debitTotal;
                                 item.cType == "IOU" ? iouTotal += item.cAmount : iouTotal;
