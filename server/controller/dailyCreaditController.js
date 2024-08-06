@@ -1,7 +1,7 @@
 const DailyCreadit = require('../model/dailyCreaditModel')
 
 
-
+const now = new Date();
 const getAllDailyCreadit = async (req, res) => {
     try {
         const getDailyCreadit = await DailyCreadit.find()
@@ -17,13 +17,14 @@ const createDailyCreaditItem = async (req, res) => {
             cPurpose,
             cType,
             cAmount,
-            cQty } = req.body;
+            cQty,
+            cDate } = req.body;
         const createItem = new DailyCreadit({
             cPurpose,
             cType,
             cAmount,
             cQty,
-            cDate:Date.now()
+            cDate,
         })
         const newItem = await createItem.save()
         res.status(200).json(newItem)

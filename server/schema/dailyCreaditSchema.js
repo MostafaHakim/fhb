@@ -4,6 +4,6 @@ const dailyCreaditSchema = mongoose.Schema({
     cAmount: Number,
     cType:String,
     cQty: Number,
-    cDate: Date,
+    cDate: String,
 })
 module.exports = dailyCreaditSchema;

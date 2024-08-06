@@ -10,7 +10,7 @@ function CreaditSheet({ data, option, setLoading }) {
     const [amount, setAmount] = useState('')
     const [qty, setQty] = useState('')
     const [ctyp, setCtype] = useState('')
-    const [tag, setTag] = useState('span')
+    const [date, setDate] = useState('')
 
 
     // ==============================Total ====================
@@ -18,8 +18,7 @@ function CreaditSheet({ data, option, setLoading }) {
     let debitTotal = 0;
     let iouTotal = 0;
     let qtyTotal = 0;
-    const date = new Date()
-    const currentDate = date.toLocaleDateString()
+   
     // ==============================End Total ====================
     // ==========================End From Data=================
 
@@ -30,9 +29,10 @@ function CreaditSheet({ data, option, setLoading }) {
         cPurpose: purpose,
         cType: ctyp,
         cAmount: amount,
-        cQty: qty
+        cQty: qty,
+        cDate:date,
     }
-
+console.log(date)
     const handelClick = (e) => {
         setLoading(true)
         e.preventDefault(),
@@ -64,8 +64,7 @@ function CreaditSheet({ data, option, setLoading }) {
                         <div className="w-full flex flex-row items-center justify-between">
                             <div className="text-xs flex flex-row item-center space-x-2">
                                 <label>Date:</label>
-                                <span>{currentDate}</span>
-
+                                <input type="date" onChange={(e)=>{setDate(e.target.value)}}/>
                             </div>
                         </div>
                         <h2 className="w-full text-center border-[1px] border-b-0 border-slate-400">Balance Sheets</h2>

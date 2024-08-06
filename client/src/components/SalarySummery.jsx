@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const SalarySamary = ({ salary, month }) => {
     const [salaryMonth, setSalaryMonth] = useState('')
+    useEffect(()=>{
+        
+    },[])
     return (
         <>
             <div className="w-full p-2">
