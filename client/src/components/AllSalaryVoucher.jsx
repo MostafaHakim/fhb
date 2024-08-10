@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import ReactToPrint from 'react-to-print';
 import logo from '../img/logo.png'
 
-const SalaryVoucher = () => {
-    const { tId, month } = useParams()
-    const componentRef = useRef()
-    const [data, setData] = useState([])
 
+const AllSalaryVoucher = ({ voucherRef, salaryMonth }) => {
+    const [data, setData] = useState([])
     useEffect(() => {
         fetch('https://fhb-api.vercel.app/salary')
             .then(res => {
@@ -19,17 +15,16 @@ const SalaryVoucher = () => {
     }, [])
     return (
         <>
-            <div className="w-full flex flex-col items-center justify-center">
-                <div className="w-11/12 p-4 bg-white mb-4 m-10" ref={componentRef}>
-                    {data.filter((item) => {
-                        if (item.mName == month && item.tId == tId) {
+            <div className="w-full flex flex-col items-center justify-center print-container" style={{ margin: "0", padding: "0" }} ref={voucherRef}>
+                <div className="w-11/12 bg-white mb-4 m-10 grid grid-rows-3 px-4">
+                    {data.filter(item => {
+                        if (item.mName == salaryMonth) {
                             return item
                         }
-                    }
-                    ).map((item, i) => {
+                    }).map((item, i) => {
                         return (
                             <>
-                                <div className="w-full border-[1px] border-slate-500" key={i}>
+                                <div className="w-full border-[1px] border-slate-500 my-10 page-break row-span-1" key={i} >
                                     <div className="flex flex-col items-center justify-center border-b-[1px] border-slate-500">
                                         <div className="flex flex-row w-full items-center justify-center space-x-4">
                                             <img className="w-16 p-1" src={logo} alt="FHB" />
@@ -131,15 +126,9 @@ const SalaryVoucher = () => {
                         )
                     })}
                 </div>
-                <div className="flex flex-row items-center justify-center space-x-4 mt-4">
-                    <ReactToPrint
-                        trigger={() => <button className="capitalize  hover:bg-green-600 text-md px-8 py-2 bg-green-500 text-white shadow-xl">Print</button>}
-                        content={() => componentRef.current}
-                    />
-                </div>
             </div>
         </>
     );
 }
 
-export default SalaryVoucher;
+export default AllSalaryVoucher;
