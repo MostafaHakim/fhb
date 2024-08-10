@@ -25,7 +25,7 @@ const HomePersonnelCount = ({ management, day, morning }) => {
                     <div className="col-span-1 flex flex-col w-full items-center justify-center p-1">
                         <div className="transition duration-700 group hover:rotate-180 w-24 h-24 rounded-full bg-gradient-to-t from-cyan-300 to-cyan-900  flex flex-col items-center justify-center shadow-xl">
                             <h2 className="text-white text-xs transition duration-700 group-hover:-rotate-180">Others</h2>
-                            <span className="text-white text-xs transition duration-700 group-hover:-rotate-180">02</span>
+                            <span className="text-white text-xs transition duration-700 group-hover:-rotate-180">01</span>
                         </div>
                     </div>
                 </div>

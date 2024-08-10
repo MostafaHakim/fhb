@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import ReactToPrint from 'react-to-print';
 
 const SalarySamary = ({ salary, month }) => {
     const [salaryMonth, setSalaryMonth] = useState('')
-    useEffect(()=>{
-        
-    },[])
+    const currentRef=useRef()
+    
+  
     return (
         <>
             <div className="w-full p-2">
@@ -18,6 +19,7 @@ const SalarySamary = ({ salary, month }) => {
                         })}
                     </select>
                 </div>
+                <div className="" ref={currentRef}>
                 <div className="w-full flex flex-col shadow-xl uppercase bg-gradient-to-tr from-sky-500 to-sky-100 text-white rounded-xl mt-4">
                     <h2 className="uppercase text-sm px-8 py-1">{`Salary Samary For the month of ${salaryMonth}`}</h2>
                 </div>
@@ -43,14 +45,14 @@ const SalarySamary = ({ salary, month }) => {
                                 <th className="border-collapse border border-slate-400  px-2 bg-gradient-to-tr from-violet-500 to-violet-400 text-white">Print</th>
                             </tr>
                         </thead>
-                        <tbody className="uppercase">
+                        <tbody className="uppercase w-full">
                             {salary.filter(item => {
                                 if (item.mName == salaryMonth) {
                                     return item
                                 }
                             }).map((item, i) => {
                                 return (
-                                    <tr className="text-[10px]" key={i}>
+                                    <tr className="w-full text-[10px]" key={i} >
                                         <td className={`border-collapse border border-slate-400 px-[2px] ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}>{i + 1}</td>
                                         <td className={`border-collapse border border-slate-400 px-[2px] ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}>{item.tId}</td>
                                         <td className={`border-collapse border border-slate-400 px-[2px] ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}>{item.tShift}</td>
@@ -66,13 +68,19 @@ const SalarySamary = ({ salary, month }) => {
                                         <td className={`border-collapse border border-slate-400 px-[2px] ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}>{item.tTotalAmount}</td>
                                         <td className={`border-collapse border border-slate-400 px-[2px] ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}>{item.tPaidAmount}</td>
                                         <td className={`border-collapse border border-slate-400 px-[2px] ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}>{item.tDueAfterPayment}</td>
+                                
                                         <td className={`border-collapse border border-slate-400 flex flex-col items-center justify-center ${item.tId % 2 == 0 ? 'bg-white' : 'bg-slate-300'}`}><Link to={`/teacher/salary/${item.tId}/${salaryMonth}`} className="px-[4px] py-[2px] text-xs bg-green-500 text-white capitalize hover:bg-green-600 shadow-lg">Print</Link></td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </table>
-                </div>
+                    </div>
+                    <ReactToPrint
+                            trigger={() => <button className="capitalize  hover:bg-green-600 text-md px-8 py-2 bg-green-500 text-white shadow-xl">Print</button>}
+                            content={() => currentRef.current}
+                    />
+            </div>
             </div>
 
         </>
