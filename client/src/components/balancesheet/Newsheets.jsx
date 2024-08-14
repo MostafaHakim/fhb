@@ -3,6 +3,8 @@ import logo from '../../img/logo.png'
 
 const Newsheets = () => {
     const [data, setData] = useState([])
+    const [number, setNumber] = useState('');
+    const [words, setWords] = useState('');
 
     const [selectedDate, setSelectedDate] = useState(() => {
         // Get today's date in the format 'YYYY-MM-DD'
@@ -27,7 +29,7 @@ const Newsheets = () => {
     return (
         <>
             <div className="w-full bg-white p-4">
-                <div className="w-2/3 m-auto flex flex-col items-center justify-center">
+                <div className="w-10/12 m-auto flex flex-col items-center justify-center">
                     <div className='flex flex-row items-center justify-center space-x-4 w-full  border-[1px] border-slate-700'>
                         <img className='w-12' src={logo} alt="" />
                         <div className='flex flex-col items-center justify-center'>

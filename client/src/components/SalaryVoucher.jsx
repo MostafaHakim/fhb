@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactToPrint from 'react-to-print';
 import logo from '../img/logo.png'
+import { toWords } from 'number-to-words';
 
 const SalaryVoucher = () => {
+    
     const { tId, month } = useParams()
     const componentRef = useRef()
     const [data, setData] = useState([])
@@ -17,6 +19,7 @@ const SalaryVoucher = () => {
                 setData(data)
             })
     }, [])
+    
     return (
         <>
             <div className="w-full flex flex-col items-center justify-center">
@@ -118,9 +121,10 @@ const SalaryVoucher = () => {
                                         </div>
                                     </div>
                                     <div className=" border-b-[1px] border-slate-500 px-[4px]">
-                                        <h2 className="px-2">{`In Words:`}</h2>
+                                        <h2 className="px-2 capitalize">{`In Words: ${toWords(parseInt(item.tPaidAmount, 10))}`}</h2>
                                     </div>
                                     <div className="flex flex-row w-full px-8 items-center justify-between mt-20">
+                                        <div className="border-t-[1px] border-slate-500 px-4">Received By</div>
                                         <div className="border-t-[1px] border-slate-500 px-4">Accounts</div>
                                         <div className="border-t-[1px] border-slate-500 px-4">Admin</div>
                                         <div className="border-t-[1px] border-slate-500 px-4">Headmaster</div>
