@@ -5,7 +5,7 @@ const SaveItem = require('../model/saveItemsModel'); // New model to save items 
 // Route to save updated items
 router.post('/', async (req, res) => {
     try {
-        const { items, date } = req.body;
+        const { items, date, totalAmount, totalQuantity, } = req.body;
         const newSave = new SaveItem({
             date,
             totalAmount,
