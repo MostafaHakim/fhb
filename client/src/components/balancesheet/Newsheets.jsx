@@ -28,10 +28,6 @@ const ItemForm = () => {
             quantity: e.target[`quantity-${item._id}`].value
         }));
 
-        const newSheets = {
-            items: updatedItems,
-            date: new Date()
-        }
         // Use fetch to send the updated items to the backend
         fetch('https://fhb-api.vercel.app/save-items', {
             method: 'POST',
