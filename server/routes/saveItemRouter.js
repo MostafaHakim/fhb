@@ -8,6 +8,8 @@ router.post('/', async (req, res) => {
         const { items, date } = req.body;
         const newSave = new SaveItem({
             date,
+            totalAmount,
+            totalQuantity,
             items
         });
 

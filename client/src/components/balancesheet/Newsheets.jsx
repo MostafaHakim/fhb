@@ -18,21 +18,38 @@ const ItemForm = () => {
         }, 5000)
     }, []);
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const updatedItems = items.map(item => ({
-            ...item,
-            amount: e.target[`amount-${item._id}`].value,
-            quantity: e.target[`quantity-${item._id}`].value
-        }));
+        let totalAmount = 0;
+        let totalQuantity = 0;
 
+        const updatedItems = items.map(item => {
+            const amount = parseFloat(e.target[`amount-${item._id}`].value);
+            const quantity = parseInt(e.target[`quantity-${item._id}`].value, 10);
+
+            totalAmount += amount;
+            totalQuantity += quantity;
+
+            return {
+                ...item,
+                amount,
+                quantity
+            };
+        });
+        const newSheets = {
+            items: updatedItems,
+            totalAmount,
+            totalQuantity,
+            date: new Date()
+        }
         // Use fetch to send the updated items to the backend
         fetch('https://fhb-api.vercel.app/save-items', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ items: updatedItems, date: new Date() })
+            body: JSON.stringify(newSheets)
         })
             .then(response => response.json())
             .then(data => console.log('Items saved successfully!', data))
