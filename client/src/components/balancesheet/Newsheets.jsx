@@ -18,12 +18,10 @@ const ItemForm = () => {
         }, 5000)
     }, []);
 
-
+    let totalAmount = 0;
+    let totalQuantity = 0;
     const handleSubmit = (e) => {
         e.preventDefault();
-        let totalAmount = 0;
-        let totalQuantity = 0;
-
         const updatedItems = items.map(item => {
             const amount = parseFloat(e.target[`amount-${item._id}`].value);
             const quantity = parseInt(e.target[`quantity-${item._id}`].value, 10);
