@@ -38,7 +38,7 @@ const ItemForm = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newSheets)
+            body: JSON.stringify({ items: updatedItems, date: new Date() })
         })
             .then(response => response.json())
             .then(data => console.log('Items saved successfully!', data))
