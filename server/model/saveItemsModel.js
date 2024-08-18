@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const saveItemSchema = new mongoose.Schema({
     date: { type: Date, required: true },
     items: [{
-        name: String,
+        optionName: String,
         amount: Number,
         quantity: Number
     }]

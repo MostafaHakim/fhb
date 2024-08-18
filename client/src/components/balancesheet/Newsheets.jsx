@@ -95,16 +95,23 @@
 
 
 import React, { useState, useEffect } from 'react';
+import LoaderSpinner from '../LoderSpinner'
+
 
 const ItemForm = () => {
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         // Fetch items using the native fetch API
         fetch('https://fhb-api.vercel.app/creditordebit')
             .then(response => response.json())
             .then(data => setItems(data))
             .catch(err => console.error(err));
+        setTimeout(() => {
+            setLoading(false)
+        }, 5000)
     }, []);
 
     const handleSubmit = (e) => {
@@ -130,12 +137,13 @@ const ItemForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            {loading && <LoaderSpinner />}
             {items.map((item, i) => (
                 <div className='w-1/2 grid grid-cols-7 border-[1px] border-t-0 border-slate-700 m-auto' key={item._id} >
                     <label className='col-span-1 w-full text-center border-r-[1px] border-slate-700 '>{i + 1}</label>
                     <label className='col-span-2 w-full   border-r-[1px] border-slate-700 text-start px-4'>{item.optionName}</label>
-                    <input type="number" name={`amount-${item._id}`} placeholder="Amount" className='col-span-2 w-full text-center  border-r-[1px] border-slate-700' required />
-                    <input type="number" name={`quantity-${item._id}`} placeholder="Quantity" className='col-span-2 w-full text-center' required />
+                    <input type="number" name={`amount-${item._id}`} placeholder="Amount" className='col-span-2 w-full text-center  border-r-[1px] border-slate-700' />
+                    <input type="number" name={`quantity-${item._id}`} placeholder="Quantity" className='col-span-2 w-full text-center' />
                 </div>
             ))}
             <button type="submit">Save</button>
