@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const saveItemSchema = new mongoose.Schema({
     date: { type: Date, required: true },
-    totalAmount: Number,
-    totalQuantity: Number,
+    totalAmount: { type: Number, required: true },
+    totalQuantity: { type: Number, required: true },
     items: [{
         optionType: String,
         optionName: String,
