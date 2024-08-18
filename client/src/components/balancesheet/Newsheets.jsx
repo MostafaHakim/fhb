@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import LoaderSpinner from '../LoderSpinner'
-import logo from '../../img/logo.png'
 
 
 const ItemForm = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(false)
-    const [selectDate, setSelectDate] = useState('')
 
     useEffect(() => {
         setLoading(true)
@@ -44,43 +42,14 @@ const ItemForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             {loading && <LoaderSpinner />}
-            <div className='w-10/12 flex flex-col  m-auto items-center justify-center p-8 bg-white space-y-4'>
-                <div className='flex flex-row items-center justify-center space-x-8'>
-                    <img src={logo} alt="" className='w-12' />
+            {items.map((item, i) => (
+                <div className='w-1/2 grid grid-cols-7 border-[1px] border-t-0 border-slate-700 m-auto' key={item._id} >
+                    <label className='col-span-1 w-full text-center border-r-[1px] border-slate-700 '>{i + 1}</label>
+                    <label className='col-span-2 w-full   border-r-[1px] border-slate-700 text-start px-4'>{item.optionName}</label>
+                    <input type="number" name={`amount-${item._id}`} placeholder="Amount" className='col-span-2 w-full text-center  border-r-[1px] border-slate-700' />
+                    <input type="number" name={`quantity-${item._id}`} placeholder="Quantity" className='col-span-2 w-full text-center' />
                 </div>
-                <div className='grid grid-cols-2 gap-1'>
-                    <div className='w-full border-t-[1px] border-slate-700 col-span-1'>
-                        <h2 className='w-full text-center border-[1px] border-t-0 border-slate-700'>Credit</h2>
-                        {items.filter(item => {
-                            if (item.optionType == "Credit") {
-                                return item
-                            }
-                        }).map((item, i) => (
-                            <div className='w-full grid grid-cols-7 border-[1px] border-t-0 border-slate-700 m-auto' key={item._id} >
-                                <label className='col-span-1 w-full text-center border-r-[1px] border-slate-700 '>{i + 1}</label>
-                                <label className='col-span-2 w-full   border-r-[1px] border-slate-700 text-start px-4'>{item.optionName}</label>
-                                <input type="number" name={`quantity-${item._id}`} placeholder="Quantity" className='col-span-2 w-full text-center border-r-[1px] border-slate-700' />
-                                <input type="number" name={`amount-${item._id}`} placeholder="Amount" className='col-span-2 w-full text-center ' />
-                            </div>
-                        ))}
-                    </div>
-                    <div className='w-full border-t-[1px] border-slate-700 col-span-1'>
-                        <h2 className='w-full text-center border-[1px] border-t-0 border-slate-700'>Debit</h2>
-                        {items.filter(item => {
-                            if (item.optionType == "Debit") {
-                                return item
-                            }
-                        }).map((item, i) => (
-                            <div className='w-full grid grid-cols-7 border-[1px] border-t-0 border-slate-700 m-auto' key={item._id} >
-                                <label className='col-span-1 w-full text-center border-r-[1px] border-slate-700 '>{i + 1}</label>
-                                <label className='col-span-2 w-full   border-r-[1px] border-slate-700 text-start px-4'>{item.optionName}</label>
-                                <input type="number" name={`quantity-${item._id}`} placeholder="Quantity" className='col-span-2 w-full text-center border-r-[1px] border-slate-700' />
-                                <input type="number" name={`amount-${item._id}`} placeholder="Amount" className='col-span-2 w-full text-center ' />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            ))}
             <button type="submit">Save</button>
         </form>
     );
