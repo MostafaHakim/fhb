@@ -3,13 +3,14 @@ const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const MONGODB_URI =process.env.MONGODB_URI
-const PORT = process.env.PORT||5000
+const MONGODB_URI = process.env.MONGODB_URI
+const PORT = process.env.PORT || 5000
 const teacherRoute = require('./routes/teacherRoute')
 const salaryRoute = require('./routes/salaryRoute')
 const monthRoute = require('./routes/monthRoute')
 const dailyCreaditRoute = require('./routes/dailyCreaditRoute')
 const creaditOrDebitRoute = require('./routes/creditOrDebitRoutes')
+const saveItemRouter = require('./routes/saveItemRouter')
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
@@ -33,6 +34,7 @@ app.use('/salary', salaryRoute)
 app.use('/month', monthRoute)
 app.use('/dailycreadit', dailyCreaditRoute)
 app.use('/creditordebit', creaditOrDebitRoute)
+app.use('/save-items', saveItemRouter)
 
 
 
